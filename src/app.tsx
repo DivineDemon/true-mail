@@ -1,10 +1,12 @@
-import { ModeToggle } from "./components/mode-toggle";
+import { Route, Routes } from "react-router-dom";
+
+import Landing from "./pages/landing";
 
 const App = () => {
   return (
-    <div className="flex w-full items-center justify-center p-5 text-3xl font-bold">
-      <ModeToggle />
-    </div>
+    <Routes>
+      <Route index element={<Landing />} />
+    </Routes>
   );
 };
 

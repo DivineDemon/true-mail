@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { BrowserRouter } from "react-router-dom";
+
 import { ThemeProvider } from "./theme-provider";
 
 interface ProvidersProps {
@@ -8,9 +10,15 @@ interface ProvidersProps {
 
 const Providers = ({ children }: ProvidersProps) => {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      {children}
-    </ThemeProvider>
+    <BrowserRouter>
+      {window.location.pathname === "/" ? (
+        children
+      ) : (
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          {children}
+        </ThemeProvider>
+      )}
+    </BrowserRouter>
   );
 };
 
