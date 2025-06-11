@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 const Navbar = () => {
   return (
-    <nav className="border-primary/25 fixed inset-x-0 top-0 z-[1] h-16 w-full border-b bg-black/20 backdrop-blur-sm">
+    <nav className="fixed inset-x-0 top-0 z-[2] h-16 w-full bg-blue-800/50 backdrop-blur-sm">
       <MaxWidthWrapper className="grid grid-cols-3 items-center justify-center">
         <div className="col-span-1 flex w-full items-center justify-start">
           <MailSearch className="fill-primary size-8 text-white" />
@@ -14,7 +14,7 @@ const Navbar = () => {
           {["Solutions", "Pricing", "Company"].map((item, idx) => (
             <span
               key={idx}
-              className="cursor-pointer text-sm font-light text-white/85 transition-all duration-200 ease-in-out hover:font-normal hover:text-white"
+              className="cursor-pointer font-medium text-white/85 transition-all duration-200 ease-in-out hover:font-semibold hover:text-white"
             >
               {item}
             </span>

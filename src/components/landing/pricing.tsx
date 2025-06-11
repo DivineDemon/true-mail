@@ -34,9 +34,9 @@ const Pricing = () => {
   }, [credits]);
 
   return (
-    <section className="flex w-full items-center justify-center">
-      <MaxWidthWrapper className="flex flex-col items-center justify-center pb-20">
-        <Badge className="bg-primary gap-1.5 border-none text-white">
+    <section className="flex w-full items-center justify-center bg-[#0F162E] text-white">
+      <MaxWidthWrapper className="flex flex-col items-center justify-center py-20">
+        <Badge className="bg-primary/50 border-primary border text-white">
           <Wallet className="size-4" />
           Pricing
         </Badge>
@@ -49,7 +49,7 @@ const Pricing = () => {
             <TabsTrigger value="deliverability">Deliverability</TabsTrigger>
           </TabsList>
           <TabsContent value="credits">
-            <div className="divide-gray-750 border-gray-750 grid min-h-[503.2px] w-full grid-cols-2 divide-x rounded-lg border bg-gray-50 dark:bg-[#141516]">
+            <div className="divide-gray-750 border-gray-750 grid min-h-[503.2px] w-full grid-cols-2 divide-x rounded-lg border bg-gray-50 text-black">
               <div className="col-span-1 flex w-full flex-col items-start justify-start gap-5 p-5">
                 <div className="flex w-full flex-col items-center justify-center gap-2.5">
                   <Label
@@ -178,7 +178,7 @@ const Pricing = () => {
             </div>
           </TabsContent>
           <TabsContent value="deliverability">
-            <div className="divide-gray-750 border-gray-750 grid min-h-[503.2px] w-full grid-cols-2 divide-x rounded-lg border bg-gray-50 dark:bg-[#141516]">
+            <div className="divide-gray-750 border-gray-750 grid min-h-[503.2px] w-full grid-cols-2 divide-x rounded-lg border bg-gray-50 text-black">
               <div className="col-span-1 flex h-full w-full flex-col items-center justify-center gap-10 p-5">
                 <div className="flex w-full items-center justify-center gap-2.5">
                   <div className="bg-primary/10 flex size-8 items-center justify-center rounded-full p-2">
@@ -233,11 +233,11 @@ const Pricing = () => {
                     Get in touch with our sales team.
                   </p>
                 </div>
-                <div className="flex w-full flex-col items-start justify-start gap-5">
+                <div className="flex w-full flex-col items-center justify-center gap-5 pl-14">
                   {[
-                    "-- Inbox Reports.",
-                    "-- Blacklist Monitors.",
-                    "-- Blacklist Check.",
+                    "Inbox Reports.",
+                    "Blacklist Monitors.",
+                    "Blacklist Check.",
                   ].map((item, idx) => (
                     <div
                       key={idx}
