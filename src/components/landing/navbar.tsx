@@ -1,7 +1,10 @@
 import { MailSearch } from "lucide-react";
+import { Link } from "react-router-dom";
+
+import { cn } from "@/lib/utils";
 
 import MaxWidthWrapper from "../max-width-wrapper";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 
 const Navbar = () => {
   return (
@@ -21,14 +24,18 @@ const Navbar = () => {
           ))}
         </div>
         <div className="col-span-1 flex w-full items-center justify-end gap-2.5">
-          <Button
-            type="button"
-            variant="ghost"
-            size="default"
-            className="text-white"
+          <Link
+            to="/register"
+            className={cn(
+              buttonVariants({
+                variant: "ghost",
+                size: "default",
+                className: "text-white",
+              })
+            )}
           >
             Register
-          </Button>
+          </Link>
           <Button
             type="button"
             variant="default"

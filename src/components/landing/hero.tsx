@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 import HeroImage from "@/assets/img/hero-img.svg";
+import { cn } from "@/lib/utils";
 
 import MaxWidthWrapper from "../max-width-wrapper";
 import Badge from "../ui/badge";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 
 const Hero = () => {
   return (
@@ -24,9 +27,17 @@ const Hero = () => {
             your emails. Simply upload a list, and export.
           </span>
           <div className="flex w-full flex-col items-start justify-center gap-2.5">
-            <Button type="button" variant="default" size="lg">
+            <Link
+              to="/register"
+              className={cn(
+                buttonVariants({
+                  variant: "default",
+                  size: "lg",
+                })
+              )}
+            >
               Get Started
-            </Button>
+            </Link>
             <span className="w-full text-left text-xs font-thin">
               100 Free Credits to Start.
             </span>

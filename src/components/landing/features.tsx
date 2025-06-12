@@ -3,10 +3,11 @@ import { ArrowRight, CircleCheck, Package } from "lucide-react";
 import FeatureOne from "@/assets/img/feature-1.svg";
 import FeatureTwo from "@/assets/img/feature-2.svg";
 import FeatureThree from "@/assets/img/feature-3.svg";
+import { cn } from "@/lib/utils";
 
 import MaxWidthWrapper from "../max-width-wrapper";
 import Badge from "../ui/badge";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 const Features = () => {
@@ -54,9 +55,17 @@ const Features = () => {
                     </li>
                   ))}
                 </ul>
-                <Button type="button" variant="default" size="lg">
+                <a
+                  href="#test"
+                  className={cn(
+                    buttonVariants({
+                      variant: "default",
+                      size: "lg",
+                    })
+                  )}
+                >
                   Try it for Free <ArrowRight className="size-5" />
-                </Button>
+                </a>
               </div>
               <div className="col-span-1 flex w-full items-center justify-center">
                 <img src={FeatureOne} alt="feature-one" className="w-full" />
@@ -92,9 +101,17 @@ const Features = () => {
                     </li>
                   ))}
                 </ul>
-                <Button type="button" variant="default" size="lg">
+                <a
+                  href="#test"
+                  className={cn(
+                    buttonVariants({
+                      variant: "default",
+                      size: "lg",
+                    })
+                  )}
+                >
                   Try it for Free <ArrowRight className="size-5" />
-                </Button>
+                </a>
               </div>
               <div className="col-span-1 flex w-full items-center justify-center">
                 <img src={FeatureTwo} alt="feature-two" className="w-full" />
@@ -129,9 +146,17 @@ const Features = () => {
                     </li>
                   ))}
                 </ul>
-                <Button type="button" variant="default" size="lg">
+                <a
+                  href="#test"
+                  className={cn(
+                    buttonVariants({
+                      variant: "default",
+                      size: "lg",
+                    })
+                  )}
+                >
                   Try it for Free <ArrowRight className="size-5" />
-                </Button>
+                </a>
               </div>
               <div className="col-span-1 flex w-full items-center justify-center">
                 <img

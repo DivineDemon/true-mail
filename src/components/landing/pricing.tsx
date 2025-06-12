@@ -7,13 +7,14 @@ import {
   User2,
   Wallet,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { creditRates } from "@/lib/constants";
 import { calculateFinalAmount, cn } from "@/lib/utils";
 
 import MaxWidthWrapper from "../max-width-wrapper";
 import Badge from "../ui/badge";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
@@ -129,14 +130,18 @@ const Pricing = () => {
                     </div>
                   </div>
                   <div className="flex w-full flex-col items-center justify-center gap-2">
-                    <Button
-                      type="button"
-                      className="w-full"
-                      variant="default"
-                      size="lg"
+                    <Link
+                      to="/register"
+                      className={cn(
+                        buttonVariants({
+                          variant: "default",
+                          size: "lg",
+                          className: "w-full",
+                        })
+                      )}
                     >
                       Get Started Free <ArrowRight />
-                    </Button>
+                    </Link>
                     <span className="text-muted-foreground w-full text-center text-xs">
                       Includes 250 free credits
                     </span>
@@ -207,14 +212,18 @@ const Pricing = () => {
                     </div>
                   ))}
                 </div>
-                <Button
-                  type="button"
-                  variant="default"
-                  size="lg"
-                  className="w-2/3"
+                <Link
+                  to="/register"
+                  className={cn(
+                    buttonVariants({
+                      variant: "default",
+                      size: "lg",
+                      className: "w-2/3",
+                    })
+                  )}
                 >
                   Get Started Free <ArrowRight />
-                </Button>
+                </Link>
               </div>
               <div className="col-span-1 flex h-full w-full flex-col items-center justify-center gap-8 p-5">
                 <div className="flex w-full items-center justify-center gap-2.5">

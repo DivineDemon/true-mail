@@ -124,6 +124,8 @@
 
 * {
   font-family: "Geist", sans-serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 input[type="time"] {

@@ -7,7 +7,7 @@ import { Input } from "../ui/input";
 
 const Test = () => {
   return (
-    <section className="w-full bg-[#0F162E] py-20 text-white">
+    <section id="test" className="w-full bg-[#0F162E] py-20 text-white">
       <MaxWidthWrapper className="grid grid-cols-2 items-center justify-center gap-20">
         <div className="col-span-1 flex w-full flex-col items-start justify-center gap-5">
           <Badge className="bg-primary/50 border-primary border text-white">

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Clientele from "@/components/landing/clientele";
 import FAQ from "@/components/landing/faq";
 import Features from "@/components/landing/features";
@@ -11,6 +13,10 @@ import Test from "@/components/landing/test";
 import Testimonials from "@/components/landing/testimonials";
 
 const Landing = () => {
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
   return (
     <>
       <Navbar />
