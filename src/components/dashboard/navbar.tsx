@@ -1,0 +1,138 @@
+import {
+  ArrowUpDown,
+  CircleHelp,
+  History,
+  LogOut,
+  MailSearch,
+  User,
+  Wallet,
+} from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+
+import { dashNavItems } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+import type { RootState } from "@/store";
+import { setMode } from "@/store/slices/global";
+
+import MaxWidthWrapper from "../max-width-wrapper";
+import { ModeToggle } from "../mode-toggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { Switch } from "../ui/switch";
+
+const Navbar = () => {
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
+  const { mode } = useSelector((state: RootState) => state.global);
+
+  const toggleValidationMode = () => {
+    if (mode === "single") {
+      dispatch(setMode("bulk"));
+    } else {
+      dispatch(setMode("single"));
+    }
+  };
+
+  return (
+    <nav className="z-[2] h-16 w-full border-b p-3.5">
+      <MaxWidthWrapper className="grid h-full grid-cols-3 items-center justify-center">
+        <div className="col-span-1 flex h-full w-full items-center justify-start">
+          <MailSearch className="dark:fill-primary text-primary size-8 dark:text-white" />
+        </div>
+        <div className="col-span-1 flex w-full items-center justify-center gap-10">
+          {dashNavItems.map((item) => (
+            <Link
+              to={item.link}
+              key={item.id}
+              className={cn(
+                "cursor-pointer font-medium transition-all duration-200 ease-in-out hover:font-semibold",
+                {
+                  "text-primary": pathname === item.link,
+                  "text-black/85 hover:text-black dark:text-white/85 dark:hover:text-white":
+                    pathname !== item.link,
+                }
+              )}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+        <div className="col-span-1 flex h-full w-full items-center justify-end gap-5 divide-x">
+          {pathname === "/verify-email" && (
+            <div className="flex h-full items-center justify-center gap-2.5 pr-5">
+              <span className="text-muted-foreground text-xs font-medium">
+                Single
+              </span>
+              <Switch
+                checked={mode === "bulk"}
+                onCheckedChange={toggleValidationMode}
+              />
+              <span className="text-muted-foreground text-xs font-medium">
+                Bulk
+              </span>
+            </div>
+          )}
+          <div className="h-full pr-5">
+            <ModeToggle />
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <div className="flex items-center justify-center gap-2.5">
+                <div className="flex flex-col items-center justify-center gap-1.5">
+                  <span className="w-full text-right text-[16px] leading-[16px] font-semibold">
+                    Mushood Hanif
+                  </span>
+                  <span className="text-muted-foreground w-full text-right text-[10px] leading-[10px]">
+                    100 Credits Remaining
+                  </span>
+                </div>
+                <img
+                  src="https://ui.shadcn.com/avatars/04.png"
+                  className="size-9 rounded-full border shadow"
+                />
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56" align="end">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <User />
+                Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <ArrowUpDown />
+                Integration
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Wallet />
+                Billing
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <History />
+                History
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <CircleHelp />
+                Help
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="text-destructive">
+                <LogOut />
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </MaxWidthWrapper>
+    </nav>
+  );
+};
+
+export default Navbar;

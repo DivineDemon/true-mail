@@ -202,3 +202,16 @@ export const faqs = [
       "Yes, we offer a free tier with limited validations per month so you can try our service before committing.",
   },
 ];
+
+export const dashNavItems = [
+  {
+    id: 1,
+    name: "Verify Email",
+    link: "/verify-email",
+  },
+  {
+    id: 2,
+    name: "Dashboard",
+    link: "/dashboard",
+  },
+];
