@@ -7,6 +7,7 @@ import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import ResetPassword from "./pages/auth/reset-password";
 import Dashboard from "./pages/dashboard/dashboard";
+import FileDetails from "./pages/dashboard/file-details";
 import VerifyEmail from "./pages/dashboard/verify-email";
 import Landing from "./pages/landing";
 
@@ -23,6 +24,7 @@ const App = () => {
       <Route element={<DashboardLayout />}>
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/file-details/:id" element={<FileDetails />} />
       </Route>
     </Routes>
   );

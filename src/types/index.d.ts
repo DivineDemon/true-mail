@@ -1,4 +1,21 @@
 declare type GlobalState = {
   email: string;
   mode: "single" | "bulk";
+  view: "list" | "grid";
+};
+
+declare type PastRecords = {
+  id: number;
+  name: string;
+  deliverable: number;
+  total: number;
+  status: "processing" | "completed" | "cancelled";
+};
+
+declare type Email = {
+  id: number;
+  email: string;
+  reason: string;
+  score: number;
+  status: "deliverable" | "undeliverable" | "risky" | "unknown";
 };

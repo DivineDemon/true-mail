@@ -54,9 +54,13 @@ const Navbar = () => {
               className={cn(
                 "cursor-pointer font-medium transition-all duration-200 ease-in-out hover:font-semibold",
                 {
-                  "text-primary": pathname === item.link,
+                  "text-primary": pathname
+                    .replace("/", "")
+                    .includes(item.link.replace("/", "")),
                   "text-black/85 hover:text-black dark:text-white/85 dark:hover:text-white":
-                    pathname !== item.link,
+                    !pathname
+                      .replace("/", "")
+                      .includes(item.link.replace("/", "")),
                 }
               )}
             >
@@ -65,20 +69,18 @@ const Navbar = () => {
           ))}
         </div>
         <div className="col-span-1 flex h-full w-full items-center justify-end gap-5 divide-x">
-          {pathname === "/verify-email" && (
-            <div className="flex h-full items-center justify-center gap-2.5 pr-5">
-              <span className="text-muted-foreground text-xs font-medium">
-                Single
-              </span>
-              <Switch
-                checked={mode === "bulk"}
-                onCheckedChange={toggleValidationMode}
-              />
-              <span className="text-muted-foreground text-xs font-medium">
-                Bulk
-              </span>
-            </div>
-          )}
+          <div className="flex h-full items-center justify-center gap-2.5 pr-5">
+            <span className="text-muted-foreground text-xs font-medium">
+              Single
+            </span>
+            <Switch
+              checked={mode === "bulk"}
+              onCheckedChange={toggleValidationMode}
+            />
+            <span className="text-muted-foreground text-xs font-medium">
+              Bulk
+            </span>
+          </div>
           <div className="h-full pr-5">
             <ModeToggle />
           </div>
@@ -123,8 +125,8 @@ const Navbar = () => {
                 Help
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive">
-                <LogOut />
+              <DropdownMenuItem className="text-destructive group">
+                <LogOut className="text-destructive group-hover:text-black dark:group-hover:text-white" />
                 Logout
               </DropdownMenuItem>
             </DropdownMenuContent>

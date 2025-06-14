@@ -1,18 +1,41 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { persistReducer, persistStore } from "redux-persist";
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  type PersistConfig,
+  REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
+} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import globalReducer from "./slices/global";
 
-const persistConfig = {
+const persistConfig: PersistConfig<GlobalState> = {
   key: "root",
   storage,
 };
 
-const store = configureStore({
+const persistedGlobalReducer = persistReducer<GlobalState>(
+  persistConfig,
+  globalReducer
+);
+
+export const store = configureStore({
   reducer: {
-    global: persistReducer(persistConfig, globalReducer),
+    global: persistedGlobalReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredActionPaths: ["register"],
+        ignoredPaths: ["global._persist"],
+      },
+    }),
 });
 
 export default store;
