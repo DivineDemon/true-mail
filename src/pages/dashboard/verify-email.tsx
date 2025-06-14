@@ -46,7 +46,7 @@ const VerifyEmail = () => {
               </Button>
             </div>
             <span className="text-muted-foreground w-full text-left text-xs">
-              See the results of your last performed email validation{" "}
+              See the results of your last performed email validation&nbsp;
               <span className="text-primary">here.</span>
             </span>
           </div>
