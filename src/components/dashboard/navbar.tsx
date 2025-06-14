@@ -133,12 +133,22 @@ const Navbar = () => {
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent>
                     <DropdownMenuItem>
-                      <CreditCard />
-                      Payment Information
+                      <Link
+                        className="flex w-full items-center justify-start gap-2"
+                        to="/dashboard/billing/payment"
+                      >
+                        <CreditCard />
+                        Payment Information
+                      </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Receipt />
-                      Invoices
+                      <Link
+                        className="flex w-full items-center justify-start gap-2"
+                        to="/dashboard/billing/invoices"
+                      >
+                        <Receipt />
+                        Invoices
+                      </Link>
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
                 </DropdownMenuPortal>

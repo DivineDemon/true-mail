@@ -19,3 +19,11 @@ declare type Email = {
   score: number;
   status: "deliverable" | "undeliverable" | "risky" | "unknown";
 };
+
+declare type Invoice = {
+  id: number;
+  amount: number;
+  status: "paid" | "unpaid" | "overdue";
+  number: string;
+  date: string;
+};

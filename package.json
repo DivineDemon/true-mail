@@ -26,6 +26,7 @@
     "@tanstack/react-table": "^8.21.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "credit-card-type": "^10.0.2",
     "dayjs": "^1.11.13",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: GlobalState = {
   email: "",
-  view: "list",
+  view: "grid",
   mode: "single",
 };
 
