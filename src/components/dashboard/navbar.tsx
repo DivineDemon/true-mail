@@ -1,9 +1,11 @@
 import {
   ArrowUpDown,
   CircleHelp,
+  CreditCard,
   History,
   LogOut,
   MailSearch,
+  Receipt,
   User,
   Wallet,
 } from "lucide-react";
@@ -22,7 +24,11 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuPortal,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Switch } from "../ui/switch";
@@ -105,22 +111,43 @@ const Navbar = () => {
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <User />
-                Profile
+                <Link
+                  to="/dashboard/profile"
+                  className="flex items-center gap-2"
+                >
+                  <User />
+                  Profile
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem disabled={true} title="Coming Soon">
                 <ArrowUpDown />
                 Integration
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Wallet />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <div className="flex w-full items-center justify-start gap-2">
+                    <Wallet className="text-muted-foreground size-4" />
+                    <span>Billing</span>
+                  </div>
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem>
+                      <CreditCard />
+                      Payment Information
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Receipt />
+                      Invoices
+                    </DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+              <DropdownMenuItem disabled={true} title="Coming Soon">
                 <History />
                 History
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem disabled={true} title="Coming Soon">
                 <CircleHelp />
                 Help
               </DropdownMenuItem>
