@@ -10,6 +10,7 @@ import Invoices from "./pages/billing/invoices";
 import PaymentInformation from "./pages/billing/payment-information";
 import Dashboard from "./pages/dashboard/dashboard";
 import FileDetails from "./pages/dashboard/file-details";
+import Help from "./pages/dashboard/help";
 import Profile from "./pages/dashboard/profile";
 import VerifyEmail from "./pages/dashboard/verify-email";
 import Landing from "./pages/landing";
@@ -26,6 +27,7 @@ const App = () => {
       </Route>
       <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/help" element={<Help />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/dashboard/profile" element={<Profile />} />
         <Route path="/dashboard/billing/invoices" element={<Invoices />} />

@@ -157,9 +157,14 @@ const Navbar = () => {
                 <History />
                 History
               </DropdownMenuItem>
-              <DropdownMenuItem disabled={true} title="Coming Soon">
-                <CircleHelp />
-                Help
+              <DropdownMenuItem>
+                <Link
+                  className="flex w-full items-center justify-start gap-2"
+                  to="/dashboard/help"
+                >
+                  <CircleHelp />
+                  Help
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="text-destructive group">

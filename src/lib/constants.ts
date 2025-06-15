@@ -1,11 +1,17 @@
 import {
   BarChart,
+  CheckCircle,
   Code,
+  Code2,
+  CreditCard,
   EyeOff,
   Gift,
   Headphones,
+  Info,
   Infinity as LucideInfinity,
   Mail,
+  Plug2,
+  Send,
   Shuffle,
   Trash2,
 } from "lucide-react";
@@ -699,5 +705,207 @@ export const invoices: Invoice[] = [
     status: "unpaid",
     number: "INV-1025",
     date: "2025-03-14",
+  },
+];
+
+export const articles: Article[] = [
+  {
+    id: 1,
+    title: "Getting Started with Email Validation",
+    image:
+      "https://plus.unsplash.com/premium_photo-1661320840402-99bee4f10ae1?q=80&w=3538&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Learn the basics of how our email validation service works and how to get up and running in minutes.",
+  },
+  {
+    id: 2,
+    title: "Understanding Email Syntax, Domain, and SMTP Checks",
+    image:
+      "https://plus.unsplash.com/premium_photo-1723849222657-e1e48a0a306e?q=80&w=3442&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Dive deep into the different stages of validation: syntax rules, domain existence, and SMTP server verification.",
+  },
+  {
+    id: 3,
+    title: "What Are Disposable Emails and Why Block Them?",
+    image:
+      "https://plus.unsplash.com/premium_photo-1679731353672-a94831f2b4f3?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "See how we detect throwaway emails and why filtering them improves your sender reputation.",
+  },
+  {
+    id: 4,
+    title: "API Integration Guide",
+    image:
+      "https://images.unsplash.com/photo-1605379399642-870262d3d051?fit=crop&w=800&q=80",
+    description:
+      "A step-by-step guide to integrating our email validation API into your app, CRM, or signup flow.",
+  },
+  {
+    id: 5,
+    title: "How to Use Bulk Email Validation",
+    image:
+      "https://plus.unsplash.com/premium_photo-1720192861694-f7bf446349fa?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Upload your list, validate thousands of emails in one go, and download clean data instantly.",
+  },
+  {
+    id: 6,
+    title: "Troubleshooting Common Validation Errors",
+    image:
+      "https://plus.unsplash.com/premium_photo-1745610507944-4b6ad888581d?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Understand the most common error messages, what they mean, and how to fix them.",
+  },
+  {
+    id: 7,
+    title: "Improving Email Deliverability with Clean Lists",
+    image:
+      "https://plus.unsplash.com/premium_photo-1733306503329-7a8c701fa9ad?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Discover best practices to maximize inbox placement and reduce bounce rates through regular list hygiene.",
+  },
+  {
+    id: 8,
+    title: "Is Your Email List GDPR Compliant?",
+    image:
+      "https://plus.unsplash.com/premium_photo-1676618539962-a492182bdae4?q=80&w=3645&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "A quick overview of how our service supports your GDPR and data privacy compliance efforts.",
+  },
+  {
+    id: 9,
+    title: "Frequently Asked Questions",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=800&q=80",
+    description:
+      "Find answers to common questions about usage limits, billing, validation accuracy, and more.",
+  },
+];
+
+export const helpCategories = [
+  {
+    id: 1,
+    name: "General",
+    description: "Common questions and information about our platform.",
+    icon: Info,
+  },
+  {
+    id: 2,
+    name: "Pricing & Billing",
+    description: "Details about plans, payments, invoices, and billing cycles.",
+    icon: CreditCard,
+  },
+  {
+    id: 3,
+    name: "Email List Verification",
+    description:
+      "Everything related to verifying, cleaning, and managing your email lists.",
+    icon: CheckCircle,
+  },
+  {
+    id: 4,
+    name: "App Integrations",
+    description: "Guides for integrating with third-party tools and platforms.",
+    icon: Plug2,
+  },
+  {
+    id: 5,
+    name: "Deliverability",
+    description: "Tips and troubleshooting to improve email inbox placement.",
+    icon: Send,
+  },
+  {
+    id: 6,
+    name: "API",
+    description: "API reference, authentication, and usage examples.",
+    icon: Code2,
+  },
+];
+
+export const exampleChat = [
+  {
+    id: 1,
+    content:
+      "Hi there! 👋 Need help validating emails faster than your coffee kicks in?",
+    type: "bot",
+  },
+  {
+    id: 2,
+    content:
+      "Hey! Yeah, I'm getting a lot of bounce-backs. Just signed up, trying to figure out how this works.",
+    type: "human",
+  },
+  {
+    id: 3,
+    content:
+      "No worries, I got you. First step: Upload your email list — CSV, TXT, or even just copy-paste. Have you got one ready?",
+    type: "bot",
+  },
+  {
+    id: 4,
+    content:
+      "Yep, I've got a CSV with about 2,000 emails. Can I upload it directly?",
+    type: "human",
+  },
+  {
+    id: 5,
+    content:
+      "Absolutely. Just drag it into the dashboard or click 'Upload List'. We'll crunch through it like a T-Rex on a salad. 🦖🥗",
+    type: "bot",
+  },
+  {
+    id: 6,
+    content: "Nice. What kind of validations do you run?",
+    type: "human",
+  },
+  {
+    id: 7,
+    content:
+      "Great question! We check for syntax errors, domain existence, MX records, temporary/disposable emails, and good ol' spam traps. 🚫📬",
+    type: "bot",
+  },
+  {
+    id: 8,
+    content: "Sweet. Is there an API for automating this?",
+    type: "human",
+  },
+  {
+    id: 9,
+    content:
+      "You bet! RESTful, JSON-based, and lightning fast ⚡. Want a sample cURL request?",
+    type: "bot",
+  },
+  {
+    id: 10,
+    content: "Sure, hit me with it.",
+    type: "human",
+  },
+  {
+    id: 11,
+    content:
+      "Here you go:\n```bash\ncurl -X POST https://api.mailverify.ai/v1/validate \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -d '{\"email\": \"test@example.com\"}'\n```",
+    type: "bot",
+  },
+  {
+    id: 12,
+    content: "Nice, clean. Where do I find my API key?",
+    type: "human",
+  },
+  {
+    id: 13,
+    content:
+      "Check your dashboard under *API Access*. It's nestled in there like a secret ingredient. 🍜",
+    type: "bot",
+  },
+  {
+    id: 14,
+    content: "Cool, I see it. Thanks for the help!",
+    type: "human",
+  },
+  {
+    id: 15,
+    content: "Anytime! Validate responsibly. 😉",
+    type: "bot",
   },
 ];
