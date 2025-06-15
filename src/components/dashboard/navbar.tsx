@@ -18,7 +18,7 @@ import type { RootState } from "@/store";
 import { setMode } from "@/store/slices/global";
 
 import MaxWidthWrapper from "../max-width-wrapper";
-import { ModeToggle } from "../mode-toggle";
+import ModeToggle from "../mode-toggle";
 import {
   DropdownMenu,
   DropdownMenuContent,

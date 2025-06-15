@@ -21,6 +21,9 @@ import GuaranteeIcon from "@/assets/icons/guarantee.svg";
 import SupportIcon from "@/assets/icons/support.svg";
 import UptimeIcon from "@/assets/icons/uptime.svg";
 
+export const ALLOWED_EXTS = ["csv", "txt", "xls", "xlsx"];
+export const EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
+
 export const creditRates = [
   {
     id: 1,

@@ -1,15 +1,29 @@
-import { MailCheck, Send, Upload } from "lucide-react";
+import { type ChangeEvent, useState } from "react";
+
+import { MailCheck, Send } from "lucide-react";
 import { useSelector } from "react-redux";
 
+import EmailListUploader from "@/components/dashboard/email-list-uploader";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { EMAIL_REGEX } from "@/lib/constants";
 import type { RootState } from "@/store";
 
 const VerifyEmail = () => {
+  const [, setEmails] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState<string>("");
   const { mode } = useSelector((state: RootState) => state.global);
+
+  const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    const extracted = value.match(EMAIL_REGEX) ?? [];
+    setEmails(extracted);
+  };
 
   return (
     <div className="h-full w-full">
@@ -57,34 +71,14 @@ const VerifyEmail = () => {
               <TabsTrigger value="paste">Copy & Paste</TabsTrigger>
             </TabsList>
             <TabsContent value="upload">
-              <div className="bg-primary/20 border-primary flex min-h-[316px] w-full flex-col items-center justify-center gap-5 rounded-lg border-2 border-dashed p-10">
-                <div className="bg-primary flex size-14 items-center justify-center rounded-full p-4">
-                  <Upload className="size-full text-white" />
-                </div>
-                <div className="flex w-full flex-col items-center justify-center gap-2.5">
-                  <span className="w-full text-center text-lg font-semibold">
-                    Drag and Drop
-                  </span>
-                  <fieldset className="border-primary/50 w-1/2 border-t">
-                    <legend className="text-primary px-5 text-center text-sm font-semibold">
-                      or
-                    </legend>
-                  </fieldset>
-                  <span className="w-full text-center text-lg font-semibold">
-                    Click to Upload
-                  </span>
-                </div>
-                <span className="w-full text-center text-sm font-medium text-gray-400">
-                  your email list for validation.
-                  <br />
-                  Supports: CSV, TXT, XLS, or XLSX.
-                </span>
-              </div>
+              <EmailListUploader setEmails={setEmails} />
             </TabsContent>
             <TabsContent value="paste">
               <Textarea
                 className="bg-primary/20 dark:bg-primary/20 border-primary h-[316px] w-full resize-none rounded-lg border-2 border-dashed"
                 placeholder="Copy & Paste your Emails Here..."
+                value={inputValue}
+                onChange={handleTextChange}
               />
             </TabsContent>
           </Tabs>

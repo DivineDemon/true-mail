@@ -6,7 +6,8 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import store, { persistor } from "@/store";
 
-import { ThemeProvider } from "./theme-provider";
+import ThemeProvider from "./theme-provider";
+import { Toaster } from "./ui/sonner";
 
 interface ProvidersProps {
   children: ReactNode;
@@ -17,6 +18,7 @@ const Providers = ({ children }: ProvidersProps) => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <BrowserRouter>
+          <Toaster richColors={true} duration={1500} />
           {window.location.pathname === "/" ? (
             children
           ) : (

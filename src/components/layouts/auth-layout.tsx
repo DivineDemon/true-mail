@@ -2,8 +2,8 @@ import { Outlet } from "react-router-dom";
 
 import AuthBG from "@/assets/img/auth-bg.svg";
 
-import { ModeToggle } from "../mode-toggle";
-import { ThemeProvider } from "../theme-provider";
+import ModeToggle from "../mode-toggle";
+import ThemeProvider from "../theme-provider";
 
 const AuthLayout = () => {
   return (
