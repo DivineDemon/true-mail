@@ -1,7 +1,6 @@
 declare type GlobalState = {
   email: string;
   mode: "single" | "bulk";
-  view: "list" | "grid";
 };
 
 declare type PastRecords = {

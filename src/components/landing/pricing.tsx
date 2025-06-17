@@ -35,7 +35,10 @@ const Pricing = () => {
   }, [credits]);
 
   return (
-    <section className="flex w-full items-center justify-center bg-[#0F162E] text-white">
+    <section
+      id="pricing"
+      className="flex w-full items-center justify-center bg-[#0F162E] text-white"
+    >
       <MaxWidthWrapper className="flex flex-col items-center justify-center py-20">
         <Badge className="bg-primary/50 border-primary border text-white">
           <Wallet className="size-4" />

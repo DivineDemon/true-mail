@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import { Trash } from "lucide-react";
+import { Check, CircleX, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Label, Pie, PieChart } from "recharts";
 
@@ -18,6 +18,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { Input } from "@/components/ui/input.tsx";
 import { cn } from "@/lib/utils";
 
 import { Button, buttonVariants } from "../ui/button";
@@ -42,6 +43,7 @@ interface PieCardProps {
 }
 
 const PieCard = ({ data }: PieCardProps) => {
+  const [name, setName] = useState<string>(data.name);
   const [open, setOpen] = useState<boolean>(false);
 
   const memoizedData = useMemo(() => {
@@ -62,11 +64,29 @@ const PieCard = ({ data }: PieCardProps) => {
   return (
     <>
       <Card className="flex flex-col">
-        <CardHeader className="flex items-center justify-between pb-0">
-          <CardTitle>{data.name}</CardTitle>
+        <CardHeader className="gap-2.5 pb-0">
+          <CardTitle className="flex w-full items-center justify-center gap-1.5">
+            <Input
+              type="text"
+              value={name}
+              className="flex-1"
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter File Name"
+            />
+            {name !== data.name && (
+              <>
+                <Button variant="default" size="icon" className="text-white">
+                  <Check />
+                </Button>
+                <Button variant="destructive" size="icon">
+                  <CircleX />
+                </Button>
+              </>
+            )}
+          </CardTitle>
           <CardDescription
             className={cn(
-              "rounded-full px-3 py-1 text-xs font-medium capitalize",
+              "ml-auto w-fit rounded-full px-3 py-1 text-xs font-medium capitalize",
               {
                 "bg-green-500/20 text-green-500": data.status === "completed",
                 "bg-yellow-500/20 text-yellow-500":

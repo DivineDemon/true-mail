@@ -5,8 +5,9 @@ import type { ColumnDef } from "@tanstack/react-table";
 import {
   AtSign,
   Briefcase,
+  Check,
+  CircleX,
   EllipsisVertical,
-  Folder,
   Trash,
 } from "lucide-react";
 import { useSelector } from "react-redux";
@@ -19,6 +20,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input.tsx";
 import { cn } from "@/lib/utils";
 import type { RootState } from "@/store";
 
@@ -29,16 +31,40 @@ export const historyColumns: ColumnDef<PastRecords>[] = [
     accessorKey: "name",
     header: "File Name",
     cell: ({ row }) => {
-      const { mode } = useSelector((state: RootState) => state.global);
+      const [name, setName] = useState<string>(row.original.name);
 
       return (
         <div className="flex w-full items-center justify-start gap-2">
-          {mode === "single" ? (
-            <AtSign className="text-primary size-4" />
-          ) : (
-            <Folder className="text-primary size-4" />
-          )}
-          <span className="flex-1 text-left">{row.original.name}</span>
+          <AtSign className="text-primary size-4" />
+          <div className="flex w-full items-center justify-start gap-2.5">
+            <Input
+              type="text"
+              placeholder="Enter File Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-1/2"
+            />
+            {name !== row.original.name && (
+              <>
+                <Button
+                  type="button"
+                  size="icon"
+                  variant="default"
+                  className="text-white"
+                >
+                  <Check />
+                </Button>
+                <Button
+                  onClick={() => setName(row.original.name)}
+                  type="button"
+                  size="icon"
+                  variant="destructive"
+                >
+                  <CircleX />
+                </Button>
+              </>
+            )}
+          </div>
         </div>
       );
     },

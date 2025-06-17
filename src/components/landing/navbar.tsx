@@ -15,12 +15,13 @@ const Navbar = () => {
         </div>
         <div className="col-span-1 flex w-full items-center justify-center gap-10">
           {["Solutions", "Pricing", "Company"].map((item, idx) => (
-            <span
+            <a
               key={idx}
+              href={`#${item.toLowerCase()}`}
               className="cursor-pointer font-medium text-white/85 transition-all duration-200 ease-in-out hover:font-semibold hover:text-white"
             >
               {item}
-            </span>
+            </a>
           ))}
         </div>
         <div className="col-span-1 flex w-full items-center justify-end gap-2.5">

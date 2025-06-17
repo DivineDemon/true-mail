@@ -7,7 +7,10 @@ import Badge from "../ui/badge";
 
 const Clientele = () => {
   return (
-    <section className="w-full bg-[#0F162E] pt-20 pb-10 text-white">
+    <section
+      id="company"
+      className="w-full bg-[#0F162E] pt-20 pb-10 text-white"
+    >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <Badge className="bg-primary/50 border-primary border text-white">
           <Users2 className="size-4" />

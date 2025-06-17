@@ -16,10 +16,7 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
-  LayoutGrid,
-  List,
 } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import {
@@ -30,8 +27,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import type { RootState } from "@/store";
-import { setView } from "@/store/slices/global";
 
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -53,14 +48,12 @@ const DataTable = <TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
-  const dispatch = useDispatch();
   const { pathname } = useLocation();
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
   });
   const [sorting, setSorting] = useState<SortingState>([]);
-  const { view } = useSelector((state: RootState) => state.global);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
@@ -80,10 +73,6 @@ const DataTable = <TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
-  const toggleView = (view: "list" | "grid") => {
-    dispatch(setView(view));
-  };
-
   return (
     <div className="flex h-full w-full flex-col items-start justify-start">
       {pathname === "/dashboard" && (
@@ -96,22 +85,6 @@ const DataTable = <TData, TValue>({
             }
             className="max-w-sm"
           />
-          <Button
-            onClick={() => toggleView("grid")}
-            type="button"
-            size="icon"
-            variant={view === "grid" ? "default" : "outline"}
-          >
-            <LayoutGrid />
-          </Button>
-          <Button
-            onClick={() => toggleView("list")}
-            type="button"
-            size="icon"
-            variant={view === "list" ? "default" : "outline"}
-          >
-            <List />
-          </Button>
         </div>
       )}
       <Table className="border">

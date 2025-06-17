@@ -34,7 +34,7 @@ const ChatBot = () => {
       </div>
       <div
         className={cn(
-          "bg-background absolute right-10 bottom-28 flex h-[420px] w-72 flex-col items-start justify-start rounded-lg border shadow transition-opacity duration-500 ease-in-out",
+          "bg-background absolute right-10 bottom-28 z-[1] flex h-[420px] w-72 flex-col items-start justify-start rounded-lg border shadow transition-opacity duration-500 ease-in-out",
           {
             "pointer-events-auto opacity-100": isOpen,
             "pointer-events-none opacity-0": !isOpen,

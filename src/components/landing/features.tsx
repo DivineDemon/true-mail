@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 const Features = () => {
   return (
-    <section className="w-full bg-white text-black">
+    <section id="solutions" className="w-full bg-white text-black">
       <MaxWidthWrapper className="flex flex-col items-center justify-center py-20">
         <Badge className="bg-primary gap-1.5 border-none text-white">
           <Package className="size-4" />
