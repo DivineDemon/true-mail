@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState } from "react";
 
 import type { ColumnDef } from "@tanstack/react-table";
 import {
@@ -10,9 +9,9 @@ import {
   EllipsisVertical,
   Trash,
 } from "lucide-react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-
+import Link from "next/link";
+import { useState } from "react";
+import { useGlobal } from "@/components/providers/global-provider";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,9 +19,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input.tsx";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import type { RootState } from "@/store";
 
 import WarningModal from "../warning-modal";
 
@@ -94,7 +92,7 @@ export const historyColumns: ColumnDef<PastRecords>[] = [
             "bg-yellow-500/20 text-yellow-500":
               row.original.status === "processing",
             "bg-red-500/20 text-red-500": row.original.status === "cancelled",
-          }
+          },
         )}
       >
         {row.original.status}
@@ -105,7 +103,7 @@ export const historyColumns: ColumnDef<PastRecords>[] = [
     id: "actions",
     cell: ({ row }) => {
       const [open, setOpen] = useState<boolean>(false);
-      const { mode } = useSelector((state: RootState) => state.global);
+      const { mode } = useGlobal();
 
       return (
         <>
@@ -126,7 +124,7 @@ export const historyColumns: ColumnDef<PastRecords>[] = [
                   </div>
                 ) : (
                   <Link
-                    to={`/dashboard/file-details/${row.original.id}`}
+                    href={`/dashboard/file-details/${row.original.id}`}
                     className="flex w-full items-center justify-center gap-2.5"
                   >
                     <Briefcase className="text-primary size-4" />
@@ -136,11 +134,8 @@ export const historyColumns: ColumnDef<PastRecords>[] = [
                   </Link>
                 )}
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <div
-                  onClick={() => setOpen(true)}
-                  className="flex w-full cursor-pointer items-center justify-center gap-2.5"
-                >
+              <DropdownMenuItem onClick={() => setOpen(true)}>
+                <div className="flex w-full cursor-pointer items-center justify-center gap-2.5">
                   <Trash className="text-primary size-4" />
                   <span className="flex-1 text-left text-sm font-medium">
                     Delete

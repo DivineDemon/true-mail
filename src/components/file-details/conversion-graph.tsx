@@ -75,12 +75,7 @@ const ConversionGraph = () => {
               cursor={false}
               content={<ChartTooltipContent indicator="line" />}
             />
-            <Bar
-              dataKey="emails"
-              layout="vertical"
-              fill="var(--color-emails)"
-              radius={10}
-            >
+            <Bar dataKey="emails" fill="var(--color-emails)" radius={10}>
               <LabelList
                 dataKey="emails"
                 position="right"

@@ -1,48 +1,52 @@
 import { MailSearch } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
 import MaxWidthWrapper from "../max-width-wrapper";
+import ModeToggle from "../mode-toggle";
 import { Button, buttonVariants } from "../ui/button";
 
 const Navbar = () => {
   return (
-    <nav className="fixed inset-x-0 top-0 z-[2] h-16 w-full bg-blue-800/50 backdrop-blur-sm">
-      <MaxWidthWrapper className="grid grid-cols-3 items-center justify-center">
+    <nav className="fixed inset-x-0 top-0 z-50 h-16 w-full border-b backdrop-blur-sm bg-background/80">
+      <MaxWidthWrapper className="grid grid-cols-3 items-center justify-center h-full">
         <div className="col-span-1 flex w-full items-center justify-start">
-          <MailSearch className="fill-primary size-8 text-white" />
+          <Link href="/" className="flex items-center gap-2">
+            <MailSearch className="size-8 text-primary" />
+            <span className="font-bold text-xl hidden sm:inline-block">
+              True Mail
+            </span>
+          </Link>
         </div>
-        <div className="col-span-1 flex w-full items-center justify-center gap-10">
-          {["Solutions", "Pricing", "Company"].map((item, idx) => (
-            <a
-              key={idx}
-              href={`#${item.toLowerCase()}`}
-              className="cursor-pointer font-medium text-white/85 transition-all duration-200 ease-in-out hover:font-semibold hover:text-white"
-            >
-              {item}
-            </a>
-          ))}
+        <div className="col-span-1 flex w-full items-center justify-center gap-4 sm:gap-10">
+          {["Solutions", "Pricing", "Company"].map((item, idx) => {
+            return (
+              <a
+                // biome-ignore lint/suspicious/noArrayIndexKey: Static nav items
+                key={idx}
+                href={`#${item.toLowerCase()}`}
+                className="cursor-pointer font-medium text-muted-foreground transition-all duration-200 ease-in-out hover:text-foreground"
+              >
+                {item}
+              </a>
+            );
+          })}
         </div>
         <div className="col-span-1 flex w-full items-center justify-end gap-2.5">
+          <ModeToggle />
           <Link
-            to="/register"
+            href="/auth/register"
             className={cn(
               buttonVariants({
                 variant: "ghost",
                 size: "default",
-                className: "text-white",
-              })
+              }),
             )}
           >
             Register
           </Link>
-          <Button
-            type="button"
-            variant="default"
-            size="default"
-            className="text-white"
-          >
+          <Button type="button" variant="default" size="default">
             Book a Demo
           </Button>
         </div>

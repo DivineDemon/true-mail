@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  files     File[] // Relation to uploaded files
+}
+
+model File {
+  id        String   @id @default(cuid())
+  name      String
+  status    String   @default("PENDING") // PENDING, PROCESSING, COMPLETED, FAILED
+  url       String? // URL to the file if stored in blob storage
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}

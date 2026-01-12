@@ -1,6 +1,5 @@
-import { type Dispatch, type SetStateAction, useCallback } from "react";
-
 import { Upload } from "lucide-react";
+import { type Dispatch, type SetStateAction, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
 import { cn, extractEmailsFromFile } from "@/lib/utils";
@@ -10,22 +9,24 @@ interface EmailListUploaderProps {
 }
 
 const EmailListUploader = ({ setEmails }: EmailListUploaderProps) => {
-  const handleExtraction = async (file: File) => {
-    const extractedEmails = await extractEmailsFromFile(file);
+  const handleExtraction = useCallback(
+    async (file: File) => {
+      const extractedEmails = await extractEmailsFromFile(file);
 
-    if (extractedEmails) {
-      setEmails(extractedEmails);
-    }
+      if (extractedEmails) {
+        setEmails(extractedEmails);
+      }
 
-    return extractedEmails;
-  };
+      return extractedEmails;
+    },
+    [setEmails],
+  );
 
   const onDrop = useCallback(
     (acceptedFiles: File[]): void => {
       void handleExtraction(acceptedFiles[0]);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [handleExtraction],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -49,7 +50,7 @@ const EmailListUploader = ({ setEmails }: EmailListUploaderProps) => {
         {
           "bg-primary/30 border-primary": isDragActive,
           "bg-primary/20 border-primary/50": !isDragActive,
-        }
+        },
       )}
     >
       <input {...getInputProps()} />

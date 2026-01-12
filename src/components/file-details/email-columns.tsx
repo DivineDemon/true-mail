@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState } from "react";
 
 import type { ColumnDef } from "@tanstack/react-table";
 import { ChevronDown, Info } from "lucide-react";
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -88,7 +88,7 @@ export const emailColumns: ColumnDef<Email>[] = [
               >
                 {status}
               </DropdownMenuItem>
-            )
+            ),
           )}
           <DropdownMenuSeparator />
           <DropdownMenuItem

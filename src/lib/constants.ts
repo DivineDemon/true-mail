@@ -16,11 +16,6 @@ import {
   Trash2,
 } from "lucide-react";
 
-import EmailsIcon from "@/assets/icons/emails.svg";
-import GuaranteeIcon from "@/assets/icons/guarantee.svg";
-import SupportIcon from "@/assets/icons/support.svg";
-import UptimeIcon from "@/assets/icons/uptime.svg";
-
 export const ALLOWED_EXTS = ["csv", "txt", "xls", "xlsx"];
 export const EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
 
@@ -122,14 +117,14 @@ export const guarantees = [
     title: "Deliverability Guarantee",
     description:
       "We guarantee that no more than 1% of emails verified as valid will bounce.",
-    icon: GuaranteeIcon,
+    icon: "/icons/guarantee.svg",
   },
   {
     id: 2,
     value: "30K+",
     title: "Emails Verified/min",
     description: "We verify emails over 8x faster than the competition.",
-    icon: EmailsIcon,
+    icon: "/icons/emails.svg",
   },
   {
     id: 3,
@@ -137,7 +132,7 @@ export const guarantees = [
     title: "Platform Uptime",
     description:
       "Our secure and robust global infrastructure provides 99.99% uptime.",
-    icon: UptimeIcon,
+    icon: "/icons/uptime.svg",
   },
   {
     id: 4,
@@ -145,7 +140,7 @@ export const guarantees = [
     title: "Customer Support",
     description:
       "Our team of experts are located around the globe & are available 24/7.",
-    icon: SupportIcon,
+    icon: "/icons/support.svg",
   },
 ];
 

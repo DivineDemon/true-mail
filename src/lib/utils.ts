@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
 import * as XLSX from "xlsx";
 
-import { ALLOWED_EXTS, EMAIL_REGEX, creditRates } from "./constants";
+import { ALLOWED_EXTS, creditRates, EMAIL_REGEX } from "./constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -55,7 +55,7 @@ export async function extractEmailsFromFile(file: File): Promise<string[]> {
 
   if (!extMatch) {
     toast.error(
-      `Unable to determine file extension for "${file.name}". Please upload a valid file.`
+      `Unable to determine file extension for "${file.name}". Please upload a valid file.`,
     );
     return [];
   }
@@ -64,7 +64,7 @@ export async function extractEmailsFromFile(file: File): Promise<string[]> {
 
   if (!ALLOWED_EXTS.includes(ext)) {
     toast.error(
-      `Invalid file type ".${ext}". Allowed types: ${ALLOWED_EXTS.map((e) => `.${e}`).join(", ")}.`
+      `Invalid file type ".${ext}". Allowed types: ${ALLOWED_EXTS.map((e) => `.${e}`).join(", ")}.`,
     );
     return [];
   }

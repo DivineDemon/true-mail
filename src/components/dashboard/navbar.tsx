@@ -9,16 +9,11 @@ import {
   User,
   Wallet,
 } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-
-import { dashNavItems } from "@/lib/constants";
-import { cn } from "@/lib/utils";
-import type { RootState } from "@/store";
-import { setMode } from "@/store/slices/global";
-
-import MaxWidthWrapper from "../max-width-wrapper";
-import ModeToggle from "../mode-toggle";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import MaxWidthWrapper from "@/components/max-width-wrapper";
+import ModeToggle from "@/components/mode-toggle";
+import { useGlobal } from "@/components/providers/global-provider";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,24 +25,25 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { Switch } from "../ui/switch";
+} from "@/components/ui/dropdown-menu";
+import { Switch } from "@/components/ui/switch";
+import { dashNavItems } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const { pathname } = useLocation();
-  const { mode } = useSelector((state: RootState) => state.global);
+  const pathname = usePathname();
+  const { mode, setMode } = useGlobal();
 
   const toggleValidationMode = () => {
     if (mode === "single") {
-      dispatch(setMode("bulk"));
+      setMode("bulk");
     } else {
-      dispatch(setMode("single"));
+      setMode("single");
     }
   };
 
   return (
-    <nav className="z-[2] h-16 w-full border-b p-3.5">
+    <nav className="z-2 h-16 w-full border-b p-3.5">
       <MaxWidthWrapper className="grid h-full grid-cols-3 items-center justify-center">
         <div className="col-span-1 flex h-full w-full items-center justify-start">
           <MailSearch className="dark:fill-primary text-primary size-8 dark:text-white" />
@@ -55,7 +51,7 @@ const Navbar = () => {
         <div className="col-span-1 flex w-full items-center justify-center gap-10">
           {dashNavItems.map((item) => (
             <Link
-              to={item.link}
+              href={item.link}
               key={item.id}
               className={cn(
                 "cursor-pointer font-medium transition-all duration-200 ease-in-out hover:font-semibold",
@@ -67,7 +63,7 @@ const Navbar = () => {
                     !pathname
                       .replace("/", "")
                       .includes(item.link.replace("/", "")),
-                }
+                },
               )}
             >
               {item.name}
@@ -101,9 +97,11 @@ const Navbar = () => {
                     100 Credits Remaining
                   </span>
                 </div>
+                {/* biome-ignore lint/performance/noImgElement: User avatar */}
                 <img
                   src="https://ui.shadcn.com/avatars/04.png"
                   className="size-9 rounded-full border shadow"
+                  alt="User Avatar"
                 />
               </div>
             </DropdownMenuTrigger>
@@ -112,7 +110,7 @@ const Navbar = () => {
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Link
-                  to="/dashboard/profile"
+                  href="/dashboard/profile"
                   className="flex items-center gap-2"
                 >
                   <User />
@@ -135,7 +133,7 @@ const Navbar = () => {
                     <DropdownMenuItem>
                       <Link
                         className="flex w-full items-center justify-start gap-2"
-                        to="/dashboard/billing/payment"
+                        href="/dashboard/billing/payment"
                       >
                         <CreditCard />
                         Payment Information
@@ -144,7 +142,7 @@ const Navbar = () => {
                     <DropdownMenuItem>
                       <Link
                         className="flex w-full items-center justify-start gap-2"
-                        to="/dashboard/billing/invoices"
+                        href="/dashboard/billing/invoices"
                       >
                         <Receipt />
                         Invoices
@@ -160,7 +158,7 @@ const Navbar = () => {
               <DropdownMenuItem>
                 <Link
                   className="flex w-full items-center justify-start gap-2"
-                  to="/dashboard/help"
+                  href="/dashboard/help"
                 >
                   <CircleHelp />
                   Help

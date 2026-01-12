@@ -1,34 +1,42 @@
 import { Users2 } from "lucide-react";
+import Image from "next/image";
+import * as React from "react";
 
 import DummyClient from "@/assets/img/client.svg";
 
 import MaxWidthWrapper from "../max-width-wrapper";
-import Badge from "../ui/badge";
+import { Badge } from "../ui/badge";
 
 const Clientele = () => {
   return (
     <section
       id="company"
-      className="w-full bg-[#0F162E] pt-20 pb-10 text-white"
+      className="w-full bg-background pt-20 pb-10 text-foreground"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
-        <Badge className="bg-primary/50 border-primary border text-white">
+        <Badge className="bg-primary/10 border-primary border text-primary">
           <Users2 className="size-4" />
           Clientele
         </Badge>
-        <span className="mt-5 mb-10 w-full text-center text-5xl font-bold">
+        <h2 className="mt-5 mb-10 w-full text-center text-4xl sm:text-5xl font-bold tracking-tight">
           Trusted by over 400,000+ clients
-        </span>
-        <div className="relative w-full overflow-hidden mask-[linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] mask-[length:100%_100%] mask-[position:0_0] mask-no-repeat">
+        </h2>
+        <div className="relative w-full overflow-hidden mask-[linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] mask-size-[100%_100%] mask-position-[0_0] mask-no-repeat">
           <div className="animate-marquee flex gap-10">
-            {Array.from({ length: 12 }).map((_, idx) => (
-              <img
-                key={idx}
-                src={DummyClient}
-                alt={`brand-${idx}`}
-                className="aspect-video shrink-0 invert"
-              />
-            ))}
+            {Array.from({ length: 12 }).map((_, idx) => {
+              return (
+                <React.Fragment
+                  // biome-ignore lint/suspicious/noArrayIndexKey: Static client list
+                  key={idx}
+                >
+                  <Image
+                    src={DummyClient}
+                    alt={`brand-${idx}`}
+                    className="aspect-video shrink-0 dark:invert"
+                  />
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
       </MaxWidthWrapper>

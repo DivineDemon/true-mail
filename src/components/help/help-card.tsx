@@ -13,6 +13,7 @@ const HelpCard = ({ article }: HelpCardProps) => {
       <div className="bg-primary absolute top-2.5 right-2.5 size-8 rounded-full p-2 text-white">
         <Link2 className="size-full" />
       </div>
+      {/* biome-ignore lint/performance/noImgElement: Article image */}
       <img
         src={article.image}
         alt="article-image"

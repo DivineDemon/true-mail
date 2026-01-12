@@ -1,7 +1,6 @@
-import { useMemo, useState } from "react";
-
 import { Check, CircleX, Trash } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import { useMemo, useState } from "react";
 import { Label, Pie, PieChart } from "recharts";
 
 import {
@@ -18,7 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Input } from "@/components/ui/input.tsx";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 import { Button, buttonVariants } from "../ui/button";
@@ -92,7 +91,7 @@ const PieCard = ({ data }: PieCardProps) => {
                 "bg-yellow-500/20 text-yellow-500":
                   data.status === "processing",
                 "bg-red-500/20 text-red-500": data.status === "cancelled",
-              }
+              },
             )}
           >
             {data.status}
@@ -150,13 +149,13 @@ const PieCard = ({ data }: PieCardProps) => {
         </CardContent>
         <CardFooter className="flex w-full items-center justify-center gap-2.5">
           <Link
-            to={`/dashboard/file-details/${data.id}`}
+            href={`/dashboard/file-details/${data.id}`}
             className={cn(
               buttonVariants({
                 variant: "default",
                 size: "default",
                 className: "flex-1 text-white",
-              })
+              }),
             )}
           >
             View Details

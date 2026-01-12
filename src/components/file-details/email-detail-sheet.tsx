@@ -1,6 +1,5 @@
-import type { Dispatch, SetStateAction } from "react";
-
 import { CircleCheck, CircleX } from "lucide-react";
+import type { Dispatch, SetStateAction } from "react";
 
 import { cn } from "@/lib/utils";
 

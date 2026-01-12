@@ -1,14 +1,14 @@
-import { useState } from "react";
+"use client";
 
 import {
   type ColumnDef,
   type ColumnFiltersState,
-  type SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
 import {
@@ -17,7 +17,8 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import {
   Table,
@@ -48,7 +49,7 @@ const DataTable = <TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
@@ -88,7 +89,7 @@ const DataTable = <TData, TValue>({
         </div>
       )}
       <Table className="border">
-        <TableHeader className="bg-muted sticky -top-[1px] z-[1] h-10 shrink-0">
+        <TableHeader className="bg-muted sticky -top-px z-1 h-10 shrink-0">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
@@ -101,7 +102,7 @@ const DataTable = <TData, TValue>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
                 );
